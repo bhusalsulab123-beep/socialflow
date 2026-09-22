@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialFlow — Social Media Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-dot"></span>SocialFlow</div>
+    <nav>
+      <a class="active" href="#"><span>▦</span> Dashboard</a>
+      <a href="#posts"><span>✎</span> Posts</a>
+      <a href="#calendar"><span>◫</span> Calendar</a>
+      <a href="#analytics"><span>⌁</span> Analytics</a>
+      <a href="#accounts"><span>◎</span> Accounts</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#"><span>⚙</span> Settings</a>
+      <div class="user"><div class="avatar">NB</div><div><b>Nanu B.</b><small>Admin</small></div><span>⋮</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+        <h1>Good evening, Nanu 👋</h1>
+        <p>Here’s what’s happening with your social media today.</p>
+      </div>
+      <button class="primary" onclick="openComposer()">＋ Create Post</button>
+    </header>
+
+    <section class="stats">
+      <div class="stat"><div class="stat-icon purple">♧</div><div><span>Total Followers</span><strong>84,291</strong><small class="up">↑ 12.8% this month</small></div></div>
+      <div class="stat"><div class="stat-icon blue">♡</div><div><span>Engagement</span><strong>8.64%</strong><small class="up">↑ 2.4% this month</small></div></div>
+      <div class="stat"><div class="stat-icon orange">◷</div><div><span>Scheduled</span><strong id="scheduledCount">18</strong><small>Next: Today, 7:30 PM</small></div></div>
+      <div class="stat"><div class="stat-icon green">↗</div><div><span>Reach</span><strong>1.24M</strong><small class="up">↑ 18.2% this month</small></div></div>
+    </section>
+
+    <section class="grid-two">
+      <div class="card chart-card" id="analytics">
+        <div class="card-head"><div><h2>Performance Overview</h2><p>Reach & engagement over the last 30 days</p></div><select><option>Last 30 days</option><option>Last 7 days</option><option>Last 90 days</option></select></div>
+        <div class="legend"><span><i class="reach"></i> Reach</span><span><i class="eng"></i> Engagement</span></div>
+        <div class="chart"><svg viewBox="0 0 700 250" preserveAspectRatio="none">
+          <line x1="0" y1="210" x2="700" y2="210"/><line x1="0" y1="155" x2="700" y2="155"/><line x1="0" y1="100" x2="700" y2="100"/><line x1="0" y1="45" x2="700" y2="45"/>
+          <polyline class="line1" points="0,185 55,170 110,178 165,130 220,148 275,112 330,125 385,80 440,102 495,62 550,88 605,45 660,58 700,35"/>
+          <polyline class="line2" points="0,205 55,198 110,190 165,180 220,188 275,160 330,171 385,142 440,150 495,122 550,135 605,105 660,116 700,90"/>
+        </svg><div class="xlabels"><span>Aug 24</span><span>Aug 29</span><span>Sep 3</span><span>Sep 8</span><span>Sep 13</span><span>Sep 18</span><span>Sep 22</span></div></div>
+      </div>
+
+      <div class="card" id="accounts">
+        <div class="card-head"><div><h2>Connected Accounts</h2><p>Manage your social profiles</p></div><button class="icon-btn" onclick="connectAccount()">＋</button></div>
+        <div class="account"><div class="social ig">◎</div><div><b>Instagram</b><small>@socialflow.agency</small></div><span class="connected">Connected</span></div>
+        <div class="account"><div class="social fb">f</div><div><b>Facebook</b><small>SocialFlow Agency</small></div><span class="connected">Connected</span></div>
+        <div class="account"><div class="social li">in</div><div><b>LinkedIn</b><small>SocialFlow Agency</small></div><span class="connected">Connected</span></div>
+        <div class="account"><div class="social tt">♪</div><div><b>TikTok</b><small>@socialflow</small></div><span class="not-connected">Connect</span></div>
+      </div>
+    </section>
+
+    <section class="grid-two lower">
+      <div class="card" id="posts">
+        <div class="card-head"><div><h2>Upcoming Posts</h2><p>Your scheduled content</p></div><button class="link" onclick="showAll()">View all →</button></div>
+        <div id="postList">
+          <div class="post"><div class="post-thumb one">NEW<br>DROP</div><div class="post-info"><b>New collection is here! ✨</b><small>Instagram · Facebook</small></div><div class="post-time"><b>Today</b><small>7:30 PM</small></div><button class="dots">⋮</button></div>
+          <div class="post"><div class="post-thumb two">5 TIPS<br>TO GROW</div><div class="post-info"><b>5 tips to grow your brand online</b><small>LinkedIn</small></div><div class="post-time"><b>Tomorrow</b><small>10:00 AM</small></div><button class="dots">⋮</button></div>
+          <div class="post"><div class="post-thumb three">BEHIND<br>THE SCENES</div><div class="post-info"><b>Behind the scenes 🎬</b><small>Instagram · TikTok</small></div><div class="post-time"><b>Sep 24</b><small>6:00 PM</small></div><button class="dots">⋮</button></div>
+        </div>
+      </div>
+      <div class="card" id="calendar">
+        <div class="card-head"><div><h2>Content Calendar</h2><p>September 2026</p></div><div class="calendar-nav"><button>‹</button><button>›</button></div></div>
+        <div class="week"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div>
+        <div class="days" id="days"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="composer">
+ <div class="modal-box">
+  <button class="close" onclick="closeComposer()">×</button>
+  <h2>Create a Post</h2><p>Compose and schedule your next social update.</p>
+  <label>Caption<textarea id="caption" placeholder="Write something engaging..."></textarea></label>
+  <label>Platforms<div class="checks"><label><input type="checkbox" checked> Instagram</label><label><input type="checkbox" checked> Facebook</label><label><input type="checkbox"> LinkedIn</label><label><input type="checkbox"> TikTok</label></div></label>
+  <div class="form-row"><label>Date<input id="date" type="date"></label><label>Time<input id="time" type="time" value="19:30"></label></div>
+  <button class="primary full" onclick="schedulePost()">Schedule Post</button>
+ </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
